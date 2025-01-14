@@ -1,0 +1,50 @@
+<div class="summary form-container">
+  <h1>Podsumowanie zgłoszenia</h1>
+
+  <section>
+    <h2>Numer startowy</h2>
+    <input type="text" [value]="raceNumber" class="form-input" readonly />
+  </section>
+
+  <section>
+    <h2>Jacht</h2>
+    <ul>
+      <li><strong>Nazwa:</strong> <input type="text" [value]="form.get('boat.name')?.value" class="form-input" readonly /></li>
+      <li><strong>Długość (m):</strong> <input type="number" [value]="form.get('boat.length')?.value" class="form-input" readonly /></li>
+      <li><strong>Szerokość (m):</strong> <input type="number" [value]="form.get('boat.width')?.value" class="form-input" readonly /></li>
+      <li><strong>Zanurzenie (m):</strong> <input type="number" [value]="form.get('boat.draft')?.value" class="form-input" readonly /></li>
+      <h2>Polisa ubezpieczeniowa jachtu</h2>
+      <ul>
+        <li><strong>Numer polisy:</strong> {{ form.get('boat.insuranceNumber')?.value || 'Brak numeru' }}</li>
+        <li><strong>Ubezpieczyciel:</strong> {{ form.get('boat.insuranceProvider')?.value || 'Brak informacji' }}</li>
+        <li><strong>Data ważności:</strong> {{ form.get('boat.insuranceExpiry')?.value || 'Brak daty' }}</li>
+      </ul>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kapitan</h2>
+    <ul>
+      <li><strong>Imię i nazwisko:</strong> <input type="text" [value]="form.get('captain.name')?.value" class="form-input" readonly /></li>
+      <li><strong>Email:</strong> <input type="email" [value]="form.get('captain.email')?.value" class="form-input" readonly /></li>
+      <li><strong>Telefon:</strong> <input type="tel" [value]="form.get('captain.phone')?.value" class="form-input" readonly /></li>
+      <h2>Przynależność klubowa kapitana</h2>
+      <p>{{ form.get('captain.clubAffiliation')?.value || 'Brak informacji' }}</p>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Załoga</h2>
+    <ul>
+      <li><strong>Liczba załogantów:</strong> <input type="number" [value]="form.get('crew.size')?.value" class="form-input" readonly /></li>
+      <li>
+        <strong>Rozmiary koszulek:</strong>
+        <ul>
+          <li *ngFor="let size of form.get('crew.tshirtSizes')?.value">
+            <input type="text" [value]="size" class="form-input" readonly />
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</div>
