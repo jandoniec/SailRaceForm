@@ -1,4 +1,4 @@
-<div class="summary form-container">
+<div #summaryContent class="summary form-container">
   <h1>Podsumowanie zgłoszenia</h1>
 
   <section>
@@ -47,4 +47,15 @@
       </li>
     </ul>
   </section>
+</div>
+<div class="actions">
+  <button (click)="submitForm()" class="button">Wyślij formularz</button>
+  <button (click)="downloadPdf()" class="button">Pobierz PDF</button>
+</div>
+
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup-content">
+    <p>Dziękujemy za zgłoszenie</p>
+    <button (click)="closePopup()" class="button">Zamknij</button>
+  </div>
 </div>
