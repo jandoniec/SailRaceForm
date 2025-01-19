@@ -49,13 +49,13 @@
   </section>
 </div>
 <div class="actions">
-  <button (click)="submitForm()" class="button">Wyślij formularz</button>
-  <button (click)="downloadPdf()" class="button">Pobierz PDF</button>
-</div>
-
-<div *ngIf="showPopup" class="popup-overlay">
-  <div class="popup-content">
-    <p>Dziękujemy za zgłoszenie</p>
-    <button (click)="closePopup()" class="button">Zamknij</button>
+  <button (click)="submitForm()" class="button">Potwierdź i wyślij zgłoszenie</button>
+  <button (click)="downloadPdf()" class="button">Pobierz potwierdzenie zgłoszenia (PDF)</button>
+  <div *ngIf="showPopup" class="popup-overlay">
+    <div class="popup-content">
+      <p>Zgłoszenie wysłano poprawnie</p>
+      
+      <button (click)="closePopup()" class="popup-button">Zamknij</button>
+    </div>
   </div>
 </div>
