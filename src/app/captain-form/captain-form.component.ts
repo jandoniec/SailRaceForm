@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../registration.service';
-import { ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -22,15 +22,16 @@ export class CaptainFormComponent implements OnInit {
     if (captainForm instanceof FormGroup) {
       this.form = captainForm;
     } else {
-      throw new Error('Captain form is not a FormGroup.');
+      throw new Error('Error');
     }
   }
 
   onNext(): void {
-    if (this.form?.valid) {
+    if (this.form.valid) {
       this.router.navigate(['/crew-form']);
     } else {
-      alert('Proszę uzupełnić wszystkie pola.'); 
+      this.form.markAllAsTouched(); // Highlights invalid fields
+      alert('Proszę uzupełnić wszystkie pola poprawnie.'); 
     }
   }
 }

@@ -1,28 +1,29 @@
 <div class="form-container">
-    <h1>Zgłoszenie Załogi</h1>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="size">Liczba załogantów:</label>
-        <input id="size" formControlName="size" type="number" class="form-input" (input)="updateTshirtSizes()" />
-      </div>
-  
-      <div class="form-group">
-        <div formArrayName="tshirtSizes">
-          <div *ngFor="let control of tshirtSizes.controls; let i = index" class="form-group">
-            <label for="tshirt-{{ i }}">Rozmiar koszulki (Załogant {{ i + 1 }}):</label>
-            <select id="tshirt-{{ i }}" [formControlName]="i" class="form-input">
-              <option value="XS">XS</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-              <option value="3XL">3XL</option>
-            </select>
-          </div>
+  <h1>Zgłoszenie Załogi</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group" [ngClass]="{'error': form.get('size')?.invalid && (form.get('size')?.touched || form.get('size')?.dirty)}">
+      <label for="size">Liczba załogantów:</label>
+      <input id="size" formControlName="size" type="number" class="form-input" (input)="updateTshirtSizes()" required />
+    </div>
+
+    <div class="form-group">
+      <div formArrayName="tshirtSizes">
+        <div *ngFor="let control of tshirtSizes.controls; let i = index" class="form-group" [ngClass]="{'error': control.invalid && (control.touched || control.dirty)}">
+          <label for="tshirt-{{ i }}">Rozmiar koszulki (Załogant {{ i + 1 }}):</label>
+          <select id="tshirt-{{ i }}" [formControlName]="i" class="form-input" required>
+            <option value="" disabled>Wybierz rozmiar</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+            <option value="3XL">3XL</option>
+          </select>
         </div>
       </div>
-  
-      <button type="submit" class="submit-button">Zakończ</button>
-    </form>
-  </div>
+    </div>
+
+    <button type="submit" class="submit-button">Zakończ</button>
+  </form>
+</div>

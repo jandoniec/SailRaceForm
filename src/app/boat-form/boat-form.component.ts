@@ -22,7 +22,7 @@ export class BoatFormComponent implements OnInit {
     if (boatForm instanceof FormGroup) {
       this.form = boatForm;
     } else {
-      throw new Error('Boat form is not a FormGroup.');
+      throw new Error('Error');
     }
   }
 
@@ -30,7 +30,8 @@ export class BoatFormComponent implements OnInit {
     if (this.form.valid) {
       this.router.navigate(['/captain-form']);
     } else {
-      alert('Proszę uzupełnić wszystkie pola.');
+      this.form.markAllAsTouched(); // Highlights errors
+      alert('Proszę uzupełnić wszystkie pola');
     }
   }
 }

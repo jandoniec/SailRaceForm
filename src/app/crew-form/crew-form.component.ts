@@ -26,7 +26,7 @@ export class CrewFormComponent implements OnInit {
     if (crewForm instanceof FormGroup) {
       this.form = crewForm;
     } else {
-      throw new Error('Crew form is not a FormGroup.');
+      throw new Error('Unable to retrieve crew form group.');
     }
   }
 
@@ -50,6 +50,7 @@ export class CrewFormComponent implements OnInit {
     if (this.form?.valid) {
       this.router.navigate(['/summary']);
     } else {
+      this.form.markAllAsTouched(); // Podświetlenie błędnych pól
       alert('Proszę uzupełnić wszystkie pola, w tym rozmiary koszulek.');
     }
   }

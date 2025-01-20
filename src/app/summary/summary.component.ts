@@ -29,7 +29,7 @@ export class SummaryComponent implements OnInit {
       if (form instanceof FormGroup) {
         this.form = form;
       } else {
-        throw new Error('Form is not a FormGroup.');
+        throw new Error('Error');
       }
     } catch (error) {
       console.error('Błąd podczas inicjalizacji formularza:', error);

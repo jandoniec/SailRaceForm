@@ -53,6 +53,13 @@ h1, h2, h3 {
   color: red;
   font-size: 1.1rem;
 }
+.form-group.error .form-input {
+  border: 2px solid red;
+}
+
+.form-group.error label {
+  color: red;
+}
 
 .submit-button {
   background-color: #007bff;
