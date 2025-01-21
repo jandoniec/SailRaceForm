@@ -26,7 +26,7 @@ export class CrewFormComponent implements OnInit {
     if (crewForm instanceof FormGroup) {
       this.form = crewForm;
     } else {
-      throw new Error('Unable to retrieve crew form group.');
+      throw new Error('Error');
     }
   }
 
